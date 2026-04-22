@@ -1,121 +1,111 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useEffect, useRef, useState } from "react";
+import * as Blockly from "blockly";
+
+import mebotToolbox from "./blockly/toolboxes/mebot.xml?raw";
+
+import "./blockly/blocks/mebot/basicBlocks.js";
+
+import pythonGenerator from "./blockly/generators/python.js";
+import javascriptGenerator from "./blockly/generators/javascript.js";
+// import "./blockly/generators/mebot.js";
+
+import PythonEditor from "./editors/PythonEditor.jsx";
+import JSEditor from "./editors/JSEditor.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const blocklyDiv = useRef(null);
+  const workspaceRef = useRef(null);
+
+  const [activeTab, setActiveTab] = useState("blocks");
+  const [pythonCode, setPythonCode] = useState("");
+  const [jsCode, setJsCode] = useState("");
+
+  useEffect(() => {
+    const parser = new DOMParser();
+    const toolboxDom = parser.parseFromString(mebotToolbox, "text/xml");
+
+    
+    const workspace =Blockly.inject(blocklyDiv.current, {
+      toolbox: toolboxDom.documentElement,
+      scrollbars: true,
+      trashcan: true,
+    });
+    workspaceRef.current = workspace;
+
+    workspaceRef.current.addChangeListener(() => {
+      const py = pythonGenerator.workspaceToCode(workspaceRef.current);
+      const js = javascriptGenerator.workspaceToCode(workspaceRef.current);
+
+      /* // 23/04/2026 DEBUGGING LOGS - BEGIN
+      console.log("workspaceRef:", workspaceRef.current.getAllBlocks(false).length);
+      
+      console.log("GENERATOR PY:", pythonGenerator);
+      console.log("GENERATOR JS:", javascriptGenerator);
+      
+      console.log("PYTHON:", py);
+      console.log("JS:", js);
+
+      const ws = workspaceRef.current;
+      if (ws) {
+          const blocks = ws.getAllBlocks(false);
+          console.log("Actual Block Count:", blocks.length);
+          const code = pythonGenerator.workspaceToCode(ws);
+          console.log("Generated Code:", code);
+      }
+      // 23/04/2026DEBUGGING LOGS - END  */
+
+      setPythonCode(py);
+      setJsCode(js);
+    });
+
+    return () => {
+      workspace.dispose();
+    };
+
+  }, []);
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+    <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+      
+      <div style={{ display: "flex", background: "#ddd", padding: "10px" }}>
+        <button onClick={() => setActiveTab("blocks")}>Blocks</button>
+        <button onClick={() => setActiveTab("python")}>Python</button>
+        <button onClick={() => setActiveTab("javascript")}>JavaScript</button>
+      </div>
+
+      <div style={{ flex: 1, position: "relative" }}>
+        <div
+          ref={blocklyDiv}
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: activeTab === "blocks" ? "block" : "none",
+          }}
+        ></div>
+
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: activeTab === "python" ? "block" : "none",
+          }}
         >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+          <PythonEditor code={pythonCode} active={activeTab === "python"} />
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: activeTab === "javascript" ? "block" : "none",
+          }}
+        >
+          <JSEditor code={jsCode} active={activeTab === "javascript"} />
+        </div>
+
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
