@@ -1,0 +1,42 @@
+<xml id="toolbox" style="display: none">
+
+  <category name="Events" colour="#FFBF00">
+    <block type="event_when_flag_clicked"></block>
+    <block type="event_when_sprite_clicked"></block>
+    <block type="event_when_key_pressed"></block>
+  </category>
+
+  <category name="Motion" colour="#4C97FF">
+    <block type="motion_move_steps"></block>
+    <block type="motion_turn_right"></block>
+    <block type="motion_turn_left"></block>
+    <block type="motion_goto_xy"></block>
+    <block type="motion_change_x"></block>
+    <block type="motion_change_y"></block>
+  </category>
+
+  <category name="Looks" colour="#9966FF">
+    <block type="looks_show"></block>
+    <block type="looks_hide"></block>
+    <block type="looks_set_size"></block>
+    <block type="looks_change_size"></block>
+    <block type="looks_switch_costume"></block>
+  </category>
+
+  <category name="Control" colour="#FFAB19">
+    <block type="controls_if"></block>
+    <block type="controls_repeat_ext"></block>
+    <block type="controls_whileUntil"></block>
+    <block type="controls_for"></block>
+    <block type="controls_flow_statements"></block>
+  </category>
+
+  <category name="Math" colour="#5CA65C">
+    <block type="math_number"></block>
+  </category>
+
+  <category name="Text" colour="#5CA699">
+    <block type="text_print"></block>
+  </category>
+
+</xml>

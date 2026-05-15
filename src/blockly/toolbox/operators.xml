@@ -1,0 +1,28 @@
+<category name="Operators" colour="#5CA65C">
+
+  <!-- Arithmetic -->
+  <block type="operator_add"></block>
+  <block type="operator_subtract"></block>
+  <block type="operator_multiply"></block>
+  <block type="operator_divide"></block>
+
+  <!-- Random -->
+  <block type="operator_random"></block>
+
+  <!-- Comparisons -->
+  <block type="operator_lt"></block>
+  <block type="operator_gt"></block>
+  <block type="operator_equals"></block>
+
+  <!-- Logic -->
+  <block type="operator_and"></block>
+  <block type="operator_or"></block>
+  <block type="operator_not"></block>
+
+  <!-- String -->
+  <block type="operator_join"></block>
+  <block type="operator_letter_of"></block>
+  <block type="operator_length"></block
+  <block type="operator_contains"></block>
+
+</category>

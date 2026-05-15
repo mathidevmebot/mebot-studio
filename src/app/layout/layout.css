@@ -1,0 +1,227 @@
+/* App Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Century Gothic BOLD', sans-serif, Arial, Helvetica;
+  font-size: small;
+}
+
+/* Top Tabs */
+.top-tabs {
+  display: flex;
+  color: yellow;
+  background: #1260a1;
+  border-bottom: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.tab {
+  padding: 8px 20px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.tab.active {
+  background: white;
+  border-bottom: 3px solid #0078ff;
+}
+
+.green-flag {
+  margin-left: auto;
+  margin-right: 5px ;
+  background: #00c853;
+  border: none;
+  padding: 12px 12px;
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+/* Main Layout */
+.main-content {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Left Sidebar */
+.left-sidebar {
+  width: 200px;
+  background: #fafafa;
+  border-right: 1px solid #ddd;
+  padding: 10px;
+}
+
+.sprite-list {
+  margin-top: 10px;
+}
+
+/* Workspace Area */
+.workspace-area {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  background: #eaeaea;
+  position: relative;
+}
+
+/* Right Panel */
+.right-panel {
+  width: 350px;
+  border-left: 1px solid #ddd;
+  padding: 10px;
+  background: #fdfdfd;
+  overflow-y: auto;
+}
+
+.code-preview {
+  background: #1e1e1e;
+  color: #dcdcdc;
+  padding: 10px;
+  height: 200px;
+  overflow: auto;
+}
+
+.console-output {
+  background: black;
+  color: #0f0;
+  padding: 10px;
+  height: 150px;
+  overflow-y: auto;
+}
+
+/* Status Bar */
+.status-bar {
+  height: 28px;
+  background: #f0f0f0;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  font-size: 13px;
+}
+
+/* Stage + Blockly container */
+.blockly-stage-container {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Blockly area */
+#blocklyArea {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  background: #eaeaea;
+}
+
+/* Stage */
+.stage-container {
+  width: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ddd;
+  border: 2px solid #aaa;
+  margin: 10px;
+}
+
+.stage-canvas {
+  background: white;
+  border-radius: 8px;
+}
+
+/* Buttons */
+.generate-btn {
+  padding: 6px 12px;
+  margin-bottom: 10px;
+  background: #0078ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.run-btn {
+  padding: 6px 12px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.blockly-container {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+#blocklyArea {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  background: #eaeaea;
+}
+
+.stage-container {
+  width: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ddd;
+  border: 2px solid #aaa;
+  margin: 10px;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Column 1 — Sprites */
+.left-sidebar {
+  width: 200px;
+  background: #fafafa;
+  border-right: 1px solid #ddd;
+}
+
+/* Column 2 — Blockly */
+.blockly-column {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  background: #eaeaea;
+}
+
+#blocklyArea {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+}
+
+/* Column 3 — Stage + RightPanel */
+.stage-column {
+  width: 480px;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #ddd;
+}
+
+.stage-container {
+  height: 360px;
+  background: #ddd;
+  border-bottom: 1px solid #ccc;
+}
+
+.right-panel {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+}

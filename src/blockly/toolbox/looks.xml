@@ -1,0 +1,7 @@
+<category name="Looks" colour="#9966FF">
+  <block type="looks_show"></block>
+  <block type="looks_hide"></block>
+  <block type="looks_set_size"></block>
+  <block type="looks_change_size"></block>
+  <block type="looks_switch_costume"></block>
+</category>

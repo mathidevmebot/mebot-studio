@@ -1,0 +1,48 @@
+.sprite-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sprite-card {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+}
+
+.sprite-card.active {
+  border: 2px solid #0078ff;
+}
+
+.sprite-thumb {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.sprite-name {
+  flex: 1;
+  font-size: 14px;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: red;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.add-sprite-btn {
+  padding: 8px;
+  background: #0078ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

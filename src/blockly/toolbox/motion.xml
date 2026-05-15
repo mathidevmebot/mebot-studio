@@ -1,0 +1,8 @@
+<category name="Motion" colour="#4C97FF">
+  <block type="motion_move_steps"></block>
+  <block type="motion_turn_right"></block>
+  <block type="motion_turn_left"></block>
+  <block type="motion_goto_xy"></block>
+  <block type="motion_change_x"></block>
+  <block type="motion_change_y"></block>
+</category>

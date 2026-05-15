@@ -1,0 +1,5 @@
+<category name="Events" colour="#FFBF00">
+  <block type="event_when_flag_clicked"></block>
+  <block type="event_when_sprite_clicked"></block>
+  <block type="event_when_key_pressed"></block>
+</category>
